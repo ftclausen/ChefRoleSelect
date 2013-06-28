@@ -128,12 +128,13 @@
 
   <property name="app.name"      value="myapp"/>
   <property name="app.path"      value="/${app.name}"/>
-  <property name="app.version"   value="0.1-dev"/>
+  <property name="app.version"   value="1.0"/>
   <property name="build.home"    value="${basedir}/build"/>
   <property name="catalina.home" value="../../../.."/> <!-- UPDATE THIS! -->
   <property name="dist.home"     value="${basedir}/dist"/>
   <property name="docs.home"     value="${basedir}/docs"/>
-  <property name="manager.url"   value="http://localhost:8080/manager/text"/>
+  <property name="lib.home"      value="${basedir}/lib"/>
+  <property name="manager.url"   value="http://localhost:8080/manager"/>
   <property name="src.home"      value="${basedir}/src"/>
   <property name="web.home"      value="${basedir}/web"/>
 
@@ -338,8 +339,9 @@
       <fileset dir="${docs.home}"/>
     </copy>
 
+
     <!-- Create application JAR file -->
-    <jar jarfile="${dist.home}/${app.name}-${app.version}.war"
+    <jar jarfile="${dist.home}/${app.name}.war"
          basedir="${build.home}"/>
 
     <!-- Copy additional files to ${dist.home} as necessary -->
@@ -456,9 +458,12 @@
     <!-- Copy external dependencies as required -->
     <!-- *** CUSTOMIZE HERE AS REQUIRED BY YOUR APPLICATION *** -->
     <mkdir  dir="${build.home}/WEB-INF/lib"/>
-<!--
-    <copy todir="${build.home}/WEB-INF/lib" file="${foo.jar}"/>
--->
+    <copy todir="${build.home}/WEB-INF/lib">
+        <!-- LIBS -->
+        <fileset dir="${basedir}/lib/">
+            <include name="*.jar"/>
+        </fileset>
+    </copy>
 
     <!-- Copy static files from external dependencies as needed -->
     <!-- *** CUSTOMIZE HERE AS REQUIRED BY YOUR APPLICATION *** -->

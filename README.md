@@ -24,4 +24,13 @@ Configuration File Things
 
 * Chef URL
 * Client name
+* PEM location
 * API Key file list
+* Supported role
+* TODO: Sent user name with request
+
+Refactorings
+------------
+
+* Actually check for roles/node existence rather than rely on exceptions
+* Use EL instead of JSP scripts
