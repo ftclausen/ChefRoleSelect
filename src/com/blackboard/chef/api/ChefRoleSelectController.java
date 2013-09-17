@@ -49,8 +49,10 @@ public class ChefRoleSelectController extends HttpServlet {
             request.setAttribute("result", "Role cannot be null");
         } else {
             // List of "approved" roles to prevent run list breakage
+            // TODO: Read from props file
             if (role.equals("test") || role.equals ("net") || 
-                role.equals("shibboleth-sp") ||
+                role.equals("shibboleth-sp") || 
+                role.equals("learn-app-base") ||
                 role.equals("learn-webserver")) {
                 roleOK = true;
             } else {
