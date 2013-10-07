@@ -1,3 +1,16 @@
+/*
+ * Author: Friedrich "Fred" Clausen
+ *
+ * Simple service to allow unpriviged users to add certain
+ * restrived roles to nodes in Chef. Basic checks are done for the following
+ *  * Is this a valid role?
+ *  * Are all the required params present?
+ *  * Is the Chef server reachable?
+ *
+ *  
+ *
+ */
+
 package com.blackboard.chef.api;
 
 import org.jclouds.ContextBuilder;

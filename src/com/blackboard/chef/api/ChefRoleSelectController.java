@@ -1,3 +1,16 @@
+/*
+ * Author: Friedrich "Fred" Clausen
+ *
+ * Simple service to allow unpriviged users to add certain
+ * restrived roles to nodes in Chef. Basic checks are done for the following
+ *  * Is this a valid role?
+ *  * Are all the required params present?
+ *  * Is the Chef server reachable?
+ *
+ *  
+ *
+ */
+
 package com.blackboard.chef.api;
 
 import javax.servlet.*;
@@ -49,6 +62,8 @@ public class ChefRoleSelectController extends HttpServlet {
             request.setAttribute("result", "Role cannot be null");
         } else {
             // List of "approved" roles to prevent run list breakage
+            // TODO: Finish property file work - source approved roles form 
+            // there.
             if (role.equals("test") || role.equals ("net") || 
                 role.equals("shibboleth-sp") ||
                 role.equals("learn-webserver")) {
