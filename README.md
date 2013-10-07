@@ -32,6 +32,7 @@ Still To Do
 -----------
 
 * Actually apply supported role list from property files
+* Use proper logging framework
 
 Refactorings
 ------------
