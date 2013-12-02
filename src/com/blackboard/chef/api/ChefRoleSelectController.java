@@ -1,3 +1,32 @@
+/*
+ *  Copyright 2013 Friedrich Clausen <friedrich.clausen@blackboard.com>
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+*/
+
+/*
+ * Author: Friedrich "Fred" Clausen
+ *
+ * Simple service to allow unpriviged users to add certain
+ * restrived roles to nodes in Chef. Basic checks are done for the following
+ *  * Is this a valid role?
+ *  * Are all the required params present?
+ *  * Is the Chef server reachable?
+ *
+ *  
+ *
+ */
+
 package com.blackboard.chef.api;
 
 import javax.servlet.*;
@@ -48,8 +77,8 @@ public class ChefRoleSelectController extends HttpServlet {
             System.out.println("ERROR: Received null role");
             request.setAttribute("result", "Role cannot be null");
         } else {
-            // List of "approved" roles to prevent run list breakage
-            // TODO: Read from props file
+            // TODO: Finish property file work - source approved roles form 
+            // there.
             if (role.equals("test") || role.equals ("net") || 
                 role.equals("shibboleth-sp") || 
                 role.equals("learn-app-base") ||
