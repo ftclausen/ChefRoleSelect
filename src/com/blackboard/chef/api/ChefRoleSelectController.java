@@ -79,8 +79,6 @@ public class ChefRoleSelectController extends HttpServlet {
             System.out.println("ERROR: Received null role");
             request.setAttribute("result", "Role cannot be null");
         } else {
-            // TODO: Finish property file work - source approved roles form 
-            // there.
             System.out.println("INFO: supported roles are " + props.getProperty("supported_roles"));
             // Case sensitive match since that's how Chef handles it
             if (props.getProperty("supported_roles").contains(role)) {
