@@ -35,10 +35,12 @@ import java.io.*;
 import java.util.*;
 
 public class ChefRoleSelectController extends HttpServlet {
+
+    Properties props;
     public void init() {
         System.out.println("DEBUG: Loading properties file /etc/ChefRoleSelect.properties ...");
         String config = "/etc/ChefRoleSelect.properties";
-        Properties props = new Properties();
+        props = new Properties();
         try {
             FileInputStream propsFile = new FileInputStream(config);
             props.load(propsFile);
@@ -77,12 +79,9 @@ public class ChefRoleSelectController extends HttpServlet {
             System.out.println("ERROR: Received null role");
             request.setAttribute("result", "Role cannot be null");
         } else {
-            // List of "approved" roles to prevent run list breakage
-            // TODO: Finish property file work - source approved roles form 
-            // there.
-            if (role.equals("test") || role.equals ("net") || 
-                role.equals("shibboleth-sp") ||
-                role.equals("learn-webserver")) {
+            System.out.println("INFO: supported roles are " + props.getProperty("supported_roles"));
+            // Case sensitive match since that's how Chef handles it
+            if (props.getProperty("supported_roles").contains(role)) {
                 roleOK = true;
             } else {
                 System.out.println("ERROR: Received unsupported role");
