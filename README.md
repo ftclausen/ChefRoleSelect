@@ -39,3 +39,4 @@ Refactorings
 
 * Actually check for roles/node existence rather than rely on exceptions
 * ~~Use EL instead of JSP scripts~~
+* Add tests!
